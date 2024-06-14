@@ -2,7 +2,7 @@
   "name": "app",
   "private": "true",
   "scripts": {
-		"build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   },
   "dependencies": {
@@ -13,7 +13,6 @@
     "@tailwindcss/typography": "^0.5.13",
     "apexcharts": "^3.49.1",
     "autoprefixer": "^10.4.19",
-    "esbuild": "^0.21.5",
     "flatpickr": "^4.6.13",
     "hotkeys-js": "^3.13.7",
     "photoswipe": "^5.4.4",
@@ -24,5 +23,8 @@
     "tailwindcss": "^3.4.4",
     "tippy.js": "^6.3.7",
     "trix": "^2.1.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.21.5"
   }
 }
