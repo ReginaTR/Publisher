@@ -18,7 +18,7 @@ module Publisher
                        routing_specs: false,
                        controller_specs: false,
                        request_specs: false
-      g.factory_bot dir: "spec/factories"
+      g.factory_bot dir: 'spec/factories'
     end
 
 
