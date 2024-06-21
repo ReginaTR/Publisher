@@ -10,13 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.1].define(version: 2024_06_18_125931) do
-ActiveRecord::Schema[7.1].define(version: 2024_06_18_124359) do
-ActiveRecord::Schema[7.1].define(version: 2024_06_18_123737) do
-ActiveRecord::Schema[7.1].define(version: 2024_06_18_122356) do
-
-
 ActiveRecord::Schema[7.1].define(version: 2024_06_18_130305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +58,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_130305) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "assemblies", force: :cascade do |t|
+    t.string "assembly_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -73,27 +72,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_130305) do
 
   create_table "books", force: :cascade do |t|
     t.datetime "published_at"
+    t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "parts", force: :cascade do |t|
-    t.string "part_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-
-  create_table "suppliers", force: :cascade do |t|
-    t.string "supplier_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -125,4 +107,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_130305) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "authors"
 end
