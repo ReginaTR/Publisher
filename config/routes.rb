@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :parts
-  resources :accounts
-  resources :suppliers
-  resources :books
-  resources :assemblies
   resources :authors
+  resources :books
+  resources :suppliers
+  resources :accounts
+  resources :parts
+  resources :assemblies
+
 	get 'about', to: 'page#about'
   if Rails.env.development? || Rails.env.test?
     mount Railsui::Engine, at: "/railsui"
