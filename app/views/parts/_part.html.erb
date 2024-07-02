@@ -6,9 +6,9 @@
       <%= part.part_number %>
     </p>
 
-   <p>
-    <%= link_to "View Part", part, class: "underline" %>
-  </p>
+    <p>
+      <%= link_to "View Part", part, class: "underline" %>
+    </p>
 
   <time class="text-zinc-600 dark:text-zinc-400 text-xs" datetime="<%= part.created_at.to_formatted_s(:long) %>">Created <%= time_ago_in_words(part.created_at) + " ago" %></time>
 </article>
